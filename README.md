@@ -67,6 +67,7 @@ Explain how others can contribute to this repository. Include guidelines for sub
 
 State the license for this project.
 
-![Alt text](Blank board.svg)
+<img src="image.svg" alt="Alt text" width="200" height="200" />
+
 
 
