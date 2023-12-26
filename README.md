@@ -19,6 +19,7 @@ A repository documenting the learning process of using `express-session` for ses
 ## Introduction
 
 Provide an overview of the purpose of this repository and what the project aims to achieve. Explain the importance of learning about `express-session`, authentication, authorization, and the use of MongoDB and Redis.
+![Alt text](image.svg)
 
 ## Technologies Used
 
