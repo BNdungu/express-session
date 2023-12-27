@@ -4,16 +4,19 @@
   "description": "A repository documenting the learning process of using `express-session` for session management, implementing authentication, authorization, and using MongoDB as well as Redis for storage.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "connect-redis": "^7.1.0",
+    "connect-redis": "^4.0.3",
     "express": "^4.18.2",
-    "express-session": "^1.17.3",
-    "nodemon": "^3.0.2",
-    "redis": "^4.6.12"
+    "express-session": "^1.17.0",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
   }
 }
