@@ -17,6 +17,7 @@ const redisClient = redis.createClient({
     host: 'localhost'
 })
 
+app.use(express.json())
 app.use(session({
     store: new RedisStore({client: redisClient}),
     secret: 'secret',
@@ -32,6 +33,25 @@ app.use(session({
 
 app.post('/login', (req,res) => {
     const {email, password} = req
+
+    req.session.clientId = "1234"
+    req.session.myNum = "abcd"
+
+    res.json('You are now loged in')
+})
+
+app.use((req,res,next) => {
+    if(!req.session || req.session.clientId){
+        const err = new Error('Failed Authentication')
+        err.statusCode = 401
+        next(err)
+    }
+
+    next()
+})
+
+app.get('/profile', (req,res) => {
+    res.json(req.session)
 })
 
 app.listen(port, () => {
