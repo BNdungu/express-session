@@ -9,11 +9,16 @@ const port = process.env.PORT || 3000
 
 app.use(express.json())
 
-const RedisStore = connectRedis(session)
+const RedisStore = connectRedis.RedisStore()
 
 const redisClient = redis.createClient({
     host: 'localhost',
     port: 6379
+})
+
+const redisStore = RedisStore({
+    client: redisClient,
+    prefix: 'sess'
 })
 
 redisClient.on('error', () => {
@@ -25,7 +30,7 @@ redisClient.on('connect', () => {
 })
 
 app.use(session({
-    store: new RedisStore({client: redisClient}),
+    store: redisStore,
     secret: 'secret',
     resave: false,
     saveUninitialized: false,

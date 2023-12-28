@@ -8,8 +8,8 @@ client.on('error', () => {
 })
 
 const store = async () => {
-    await client.set('key', 'value')
-    const value = await client.get('key')
+    await client.set('morning', '11:30am')
+    const value = await client.get('morning')
     console.log(value)
 }
 
