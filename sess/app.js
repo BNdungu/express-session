@@ -1,6 +1,7 @@
 const express = require('express')
 const redis = require('redis')
 const RedisStore = require('connect-redis').default; 
+const routes = require('./routes')
 const session = require('express-session')
 
 
@@ -8,6 +9,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.json())
+app.use('/api/v1',routes)
 
 
 const redisClient = redis.createClient({
