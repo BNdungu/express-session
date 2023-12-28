@@ -1,6 +1,6 @@
 const express = require('express')
 const redis = require('redis')
-const connectRedis = require('connect-redis')
+const RedisStore = require('connect-redis').default; 
 const session = require('express-session')
 
 
@@ -9,14 +9,13 @@ const port = process.env.PORT || 3000
 
 app.use(express.json())
 
-const RedisStore = connectRedis.RedisStore()
 
 const redisClient = redis.createClient({
     host: 'localhost',
     port: 6379
 })
 
-const redisStore = RedisStore({
+const redisStore = new RedisStore({
     client: redisClient,
     prefix: 'sess'
 })
