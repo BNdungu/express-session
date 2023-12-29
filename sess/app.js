@@ -17,19 +17,13 @@ const redisClient = redis.createClient({
     port: 6379
 })
 
-redisClient.connect().catch(console.error);
-
 const redisStore = new RedisStore({
     client: redisClient,
-    prefix: 'sess'
+    // prefix: 'sess'
 })
 
 redisClient.on('error', () => {
     console.error('Couldn\'t establish a connection wit the Redis Server')
-})
-
-redisClient.on('conect', () => {
-    console.log('connected to the Redis Server')
 })
 
 redisClient.on('connect', () => {
@@ -48,6 +42,7 @@ app.use(session({
     }
 }))
 
-app.listen(port, () => {
+app.listen(port, async () => {
+    await redisClient.connect().catch(console.error);
     console.log(`Server started to listen at port ${port}`)
 })
