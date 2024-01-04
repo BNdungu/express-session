@@ -19,7 +19,7 @@ const redisClient = redis.createClient({
 
 const redisStore = new RedisStore({
     client: redisClient,
-    // prefix: 'sess'
+    prefix: 'sess'
 })
 
 redisClient.on('error', () => {
