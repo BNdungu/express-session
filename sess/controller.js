@@ -21,7 +21,7 @@ const login = (req, res) => {
     const {username, password} = req.body
     console.log(username)
     sess.username = username
-    sess.password = password
+    sess.password = password // store session data
     res.send('succes')
 }
 
